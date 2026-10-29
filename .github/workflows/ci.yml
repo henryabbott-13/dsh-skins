@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build the client bundle
+        run: node packages/plugin/build.mjs
+
+      - name: Verify the bundle is a single valid registration
+        run: node tools/verify-bundle.mjs
+
+      - name: Verify package manifests are consistent
+        run: node tools/verify-manifests.mjs
+
+      # The suites stub the shell and run in a sandbox built from this checkout,
+      # so CI needs no DSH install and no artwork.
+      - name: Run offline test suites
+        run: node tests/run.mjs
+
+      - name: Toolkit contract
+        run: node tests/toolkit.mjs
+
+      - name: Host config contract
+        run: node tests/host-config.mjs
+
+      - name: Demo skins are valid
+        run: node packages/toolkit/bin/cli.mjs check skins/demo

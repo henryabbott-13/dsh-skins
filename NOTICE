@@ -1,0 +1,19 @@
+dsh-skins
+Copyright 2026 Henry Abbott (henryabbott-13)
+
+This product is an unofficial community project for DeepSeek Harness.
+It is not affiliated with, endorsed by, or sponsored by DeepSeek.
+
+No third-party artwork, fonts, or media are included in this repository.
+Sample skins under skins/demo/ are generated procedurally by tools in this
+repository and are covered by the same license as the code.
+
+Third-party dependencies are declared in each package.json and are installed
+from the npm registry; they are not vendored here. Notable runtime dependencies:
+
+  - sharp (Apache-2.0) — image resizing/encoding, used by the toolkit only
+  - ffmpeg — invoked as an external program at runtime; it is never bundled.
+    Users install it themselves (Gyan.FFmpeg or their platform package).
+
+The full license text is in LICENSE (Apache-2.0) and LICENSE-docs (CC-BY-4.0
+for documentation).

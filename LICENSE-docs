@@ -1,0 +1,31 @@
+Documentation license
+=====================
+
+All documentation in this repository — including README.md, README.zh-CN.md,
+everything under docs/, and the screenshots and diagrams that depict this
+project — is licensed under the Creative Commons Attribution 4.0 International
+License (CC-BY-4.0).
+
+You may copy, redistribute, translate, adapt and build upon this documentation,
+including commercially, provided that you:
+
+  1. give appropriate credit to the project
+     ("dsh-skins by Henry Abbott (henryabbott-13)") and link to the repository;
+  2. include a link to the license: https://creativecommons.org/licenses/by/4.0/
+  3. indicate which changes were made (a translation counts as a change).
+
+The license does not grant trademark rights, and it is not a software license:
+the code is licensed under Apache-2.0 (see LICENSE).
+
+Attribution template for a derived document:
+
+  Based on dsh-skins documentation by Henry Abbott (henryabbott-13),
+  licensed under CC-BY-4.0. Changes: <what you changed>.
+
+Source and license text:
+  Repository: https://github.com/henryabbott-13/dsh-skins
+  License:    https://creativecommons.org/licenses/by/4.0/legalcode
+
+Note on code snippets inside the documentation: the small configuration and
+shell fragments quoted in the docs are also provided under Apache-2.0, so you
+may copy them into your own project without the attribution requirement above.

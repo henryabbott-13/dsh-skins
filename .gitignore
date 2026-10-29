@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Test sandbox and probe leftovers (rebuilt by tests/run.mjs)
+tests/.sandbox/
+output/_scan/.verify-backup/
+output/_scan/.asset-probe/
+
+# Build output that is generated, not authored
+packages/plugin/lib/client.js.bak
+*.log
+
+# Local data a user generates while running the plugin
+skins/
+!skins/demo/
+!skins/demo/**
+
+# Exports and temporary archives
+*.zip
+*.tar.gz
+output/
+exports/
+trash/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

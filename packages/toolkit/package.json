@@ -1,0 +1,23 @@
+{
+  "name": "@henryabbott-13/dsh-skins-toolkit",
+  "version": "0.1.0",
+  "description": "Derive DSH skin tokens from a measured artwork record and assemble skin directories (community, unofficial)",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "lib/index.mjs",
+  "exports": {
+    ".": "./lib/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "dsh-skins": "bin/cli.mjs"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}

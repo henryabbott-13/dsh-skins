@@ -1,0 +1,11 @@
+# Normalise line endings: text is LF everywhere, media stays binary.
+* text=auto eol=lf
+*.png binary
+*.webp binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.avif binary
+*.mp4 binary
+*.webm binary
+*.zip binary

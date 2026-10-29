@@ -1,0 +1,12 @@
+# dsh-skins bundle layer.
+#
+# A bundle is a profile dependency that carries its own patch layer; installing
+# it appends this layer after the profile's own patches. The row below inserts
+# the plugin by *package name* (not a file URL), so the copy that the profile
+# installed is the one that loads.
+#
+# `config.defaultSkin` is optional: when it names a skin that is not present,
+# the panel falls back to the first available skin (or its empty-state guide).
+- insert:
+    - id: ui-dsh-skins
+      name: '@henryabbott-13/dsh-plugin-skins'

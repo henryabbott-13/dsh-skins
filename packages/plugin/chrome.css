@@ -1,0 +1,84 @@
+/* ==========================================================================
+   dsh-skins — shell chrome adjustments
+   ==========================================================================
+   This file exists because of a specific, recorded failure in this profile.
+
+   `cordis.patch.yml` (desktop) documents that an earlier wallpaper plugin was
+   disabled here:
+
+     "The desktop app showed faint 1-device-pixel edge lines over the wallpaper;
+      five attempts at the plugin layer (layer overdraw, gate timing, and
+      column/frame/handle border plus pseudo-element overrides) all left them in
+      place, so the conclusion is that they are not drawn by anything the plugin
+      controls."
+
+   Those rules are re-stated here anyway, because they are cheap, they are
+   correct, and if the lines turn out to be painted by a surface that a future
+   build *does* route through these tokens, this file fixes them. The difference
+   from the earlier attempt is that the wallpaper is now mounted as a fixed
+   layer whose geometry is not derived from the frame at all, so no column,
+   handle or border width can shift it.
+
+   Everything is scoped to `html[data-skin]`, which the plugin sets only while a
+   skin is applied — with no skin, this file is inert.
+   ========================================================================== */
+
+/* The artwork layer sits under the shell and must never take pointer events or
+   paint over a corner radius. `inset: 0` with no transform keeps it at exact
+   device-pixel edges, which is what avoids a one-pixel seam. */
+html[data-skin] [data-dsh-skin-layer] {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: none;
+  border: 0;
+  border-radius: 0;
+}
+
+html[data-skin] [data-dsh-skin-layer] > img,
+html[data-skin] [data-dsh-skin-layer] > video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+  outline: 0;
+  /* A fractional device-pixel scale can leave a hairline at the edge; snapping
+     the element to whole pixels is what keeps it clean. */
+  transform: translateZ(0);
+}
+
+/* The shell's own frame must show the artwork through the column dividers and
+   handles. These are the surfaces the earlier attempt also had to clear. */
+html[data-skin] [class*="_frame"],
+html[data-skin] [class*="_centerCol"],
+html[data-skin] [class*="_sidebarCol"] {
+  border-color: transparent;
+}
+
+html[data-skin] [class*="_frame"]::before,
+html[data-skin] [class*="_frame"]::after,
+html[data-skin] [class*="_sidebarCol"]::before,
+html[data-skin] [class*="_sidebarCol"]::after,
+html[data-skin] [class*="_handle"]::before,
+html[data-skin] [class*="_handle"]::after {
+  border: 0;
+  box-shadow: none;
+}
+
+/* The column resize handles are interactive, so they keep their hit area but
+   stop painting an edge over the artwork. */
+html[data-skin] [class*="_handle"] {
+  border-color: transparent;
+  background: transparent;
+}
+
+/* Keep the shell's own content above the artwork layer. */
+html[data-skin] body > #root,
+html[data-skin] body > [class*="_frame"] {
+  position: relative;
+  z-index: 1;
+}

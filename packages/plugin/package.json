@@ -1,0 +1,35 @@
+{
+  "name": "@henryabbott-13/dsh-plugin-skins",
+  "version": "0.1.0",
+  "description": "Wallpaper and theme skins for DeepSeek Harness: serves skin assets over loopback routes and applies a skin's token layer through ctx.theme, with a right-sidebar panel (community, unofficial)",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "chrome.css",
+    "build.mjs",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dsh": {
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-theme",
+        "@deepseek-ai/dsh-client-ui-layout"
+      ],
+      "platform": "web"
+    }
+  },
+  "engines": {
+    "dsh": "^0.2.1"
+  }
+}
