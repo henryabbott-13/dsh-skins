@@ -1584,7 +1584,7 @@ function planCleanup(skinsDir, keep) {
  * quarantine directory inside the workspace rather than deleting, and the log
  * records which of the two actually happened for every folder.
  */
-async function applyCleanup(plan, { skinsDir, trashDir, run, when }) {
+async function applyCleanup(plan, { skinsDir, trashDir, run, when, platform = process.platform }) {
   const lines = [];
   const quarantine = join(trashDir, when);
   const moved = [];
@@ -1598,7 +1598,9 @@ async function applyCleanup(plan, { skinsDir, trashDir, run, when }) {
       continue;
     }
     let how = null;
-    if (process.platform === 'win32') {
+    // Platform is a parameter, not a global read: the Recycle Bin branch is the
+    // one behaviour that cannot be exercised on a Linux runner otherwise.
+    if (platform === 'win32') {
       const target = from.replace(/'/gu, "''");
       const script = `Add-Type -AssemblyName Microsoft.VisualBasic; [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteDirectory('${target}', 'OnlyErrorDialogs', 'SendToRecycleBin')`;
       const result = await run('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', script], 60000);

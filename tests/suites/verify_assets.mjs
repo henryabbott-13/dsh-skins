@@ -352,7 +352,7 @@ const fakeRecycle = async (command, args) => {
   rmSync(match[1], { recursive: true, force: true });
   return { code: 0, output: '' };
 };
-const applied = await api.applyCleanup(plan, { skinsDir: cleanRoot, trashDir: trashRoot, run: fakeRecycle, when: 'run-1' });
+const applied = await api.applyCleanup(plan, { skinsDir: cleanRoot, trashDir: trashRoot, run: fakeRecycle, when: 'run-1', platform: 'win32' });
 record(applied.moved.length === 2 && applied.moved.every((row) => row.how === 'recycle-bin'), 'on Windows the folders are sent to the Recycle Bin', recycled[0] ?? '');
 record(recycled.every((command) => command === 'powershell.exe'), 'through one powershell invocation per folder', String(recycled.length));
 record(existsSync(join(cleanRoot, 'img_a_11111111')) && !existsSync(join(cleanRoot, 'img_b_22222222')), 'the kept folder stays and the others are gone');
@@ -362,7 +362,7 @@ record(applied.lines.length === 2 && applied.lines.every((line) => line.includes
 mkdirSync(join(cleanRoot, 'img_d_44444444'), { recursive: true });
 writeFileSync(join(cleanRoot, 'img_d_44444444', 'skin.json'), '{}');
 const plan2 = { remove: [{ skinId: 'img_d_44444444', bytes: 2 }], kept: [], totalBytes: 2 };
-const refused = await api.applyCleanup(plan2, { skinsDir: cleanRoot, trashDir: trashRoot, run: async () => ({ code: 1, output: 'Access denied\n' }), when: 'run-2' });
+const refused = await api.applyCleanup(plan2, { skinsDir: cleanRoot, trashDir: trashRoot, run: async () => ({ code: 1, output: 'Access denied\n' }), when: 'run-2', platform: 'win32' });
 record(refused.moved[0].how === 'quarantine', 'a refused Recycle Bin falls back to the quarantine directory', refused.moved[0].how);
 record(existsSync(join(trashRoot, 'run-2', 'img_d_44444444', 'skin.json')), 'and the folder is really there, recoverable');
 record(refused.lines.some((line) => line.includes('回收站不可用')), 'the log records why it fell back', refused.lines.join(' | ').slice(0, 120));
