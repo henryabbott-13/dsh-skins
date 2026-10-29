@@ -11,8 +11,11 @@ output/_scan/.asset-probe/
 packages/plugin/lib/client.js.bak
 *.log
 
-# Local data a user generates while running the plugin
-skins/
+# Local data a user generates while running the plugin.
+# `skins/*` ignores the entries, not the directory itself, so the tracked demos
+# below can be re-included. (`skins/` would ignore the directory and Git would
+# never descend into it — the demos then silently vanish from the repository.)
+skins/*
 !skins/demo/
 !skins/demo/**
 

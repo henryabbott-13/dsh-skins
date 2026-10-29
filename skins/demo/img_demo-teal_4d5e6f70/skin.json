@@ -1,0 +1,26 @@
+{
+  "skinId": "img_demo-teal_4d5e6f70",
+  "name": "Demo Teal",
+  "nameZh": "示例·青碧",
+  "type": "image",
+  "source": {
+    "file": "img_demo-teal_4d5e6f70.png",
+    "bytes": 0,
+    "width": 640,
+    "height": 360,
+    "durationSeconds": null
+  },
+  "assets": {
+    "wallpaper": "assets/wallpaper.png",
+    "thumb": "assets/wallpaper.png",
+    "poster": "assets/wallpaper.png"
+  },
+  "design": null,
+  "styleKeywords": [
+    "demo",
+    "generated"
+  ],
+  "mood": [
+    "calm"
+  ]
+}

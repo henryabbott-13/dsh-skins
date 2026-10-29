@@ -1,0 +1,26 @@
+{
+  "skinId": "img_demo-ember_6b1f2c3d",
+  "name": "Demo Ember",
+  "nameZh": "示例·余烬",
+  "type": "image",
+  "source": {
+    "file": "img_demo-ember_6b1f2c3d.png",
+    "bytes": 0,
+    "width": 640,
+    "height": 360,
+    "durationSeconds": null
+  },
+  "assets": {
+    "wallpaper": "assets/wallpaper.png",
+    "thumb": "assets/wallpaper.png",
+    "poster": "assets/wallpaper.png"
+  },
+  "design": null,
+  "styleKeywords": [
+    "demo",
+    "generated"
+  ],
+  "mood": [
+    "calm"
+  ]
+}
