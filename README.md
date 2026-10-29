@@ -7,7 +7,7 @@ skin.
 
 > Community project, unofficial. Not affiliated with or endorsed by DeepSeek.
 
-![A generated demo skin](skins/demo/img_demo-ember_6b1f2c3d/assets/wallpaper.png)
+![dsh-skins — the three generated demo skins](docs/social-preview.png)
 
 ## What you get
 

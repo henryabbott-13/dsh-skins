@@ -5,7 +5,7 @@
 
 > 社区项目，非官方。与 DeepSeek 无隶属或背书关系。
 
-![一张程序化生成的示例皮肤](skins/demo/img_demo-ember_6b1f2c3d/assets/wallpaper.png)
+![dsh-skins —— 三套程序化示例皮肤](docs/social-preview.png)
 
 ## 能力
 
